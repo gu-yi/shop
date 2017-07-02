@@ -1,0 +1,21 @@
+[ 2017-06-03T00:01:58+08:00 ] 127.0.0.1 /Admin/Goods/delete
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000547s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000955s ]
+
+[ 2017-06-03T00:14:38+08:00 ] 127.0.0.1 /Admin/Goods/delete
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001153s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002018s ]
+SQL: SHOW COLUMNS FROM `tp_goods` [ RunTime:0.0159s ]
+SQL: SELECT * FROM `tp_goods` WHERE `id` = 61 LIMIT 1   [ RunTime:0.0005s ]
+SQL: UPDATE `tp_goods` SET `goods_status`='0' WHERE `id` = 61 [ RunTime:0.0005s ]
+
+[ 2017-06-03T00:15:04+08:00 ] 127.0.0.1 /Admin/Goods/delete
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000605s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001135s ]
+SQL: SHOW COLUMNS FROM `tp_goods` [ RunTime:0.0125s ]
+SQL: SELECT * FROM `tp_goods` WHERE `id` = 59 LIMIT 1   [ RunTime:0.0004s ]
+SQL: UPDATE `tp_goods` SET `goods_status`='1' WHERE `id` = 59 [ RunTime:0.0003s ]
+

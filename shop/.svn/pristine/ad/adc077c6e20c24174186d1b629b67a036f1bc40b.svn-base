@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="{:u('add')}">添加</a>
+<table border="1" width="400">
+    <tr>
+        <td>ID</td>
+        <td>名称</td>
+        <td>排序</td>
+        <td>修改</td>
+        <td>删除</td>
+    </tr>
+    <foreach name="arr" item="v">
+        <tr>
+                <td>{$v.id}</td>
+                <td>{$v.brand_name}</td>
+                <td>{$v.brand_sort}</td>
+                <td><a href="{:u('update?id='.$v['id'].'&name='.$v['brand_name'].'&sort='.$v['brand_sort'])}">修改</a> </td>
+                <td><a href="{:u('delete?id='.$v['id'])}">删除</a></td>
+        </tr>
+    </foreach>
+</table>
+</body>
+</html>

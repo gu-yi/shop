@@ -1,0 +1,12 @@
+[ 2017-05-31T17:40:44+08:00 ] 127.0.0.1 /Admin/Brand/brandList.html
+ERR: SQLSTATE[HY000] [2002] 由于目标计算机积极拒绝，无法连接。
+
+
+[ 2017-05-31T17:42:28+08:00 ] 127.0.0.1 /Admin/Brand/brandList.html
+ERR: SQLSTATE[HY000] [2002] 由于目标计算机积极拒绝，无法连接。
+
+
+[ 2017-05-31T17:46:13+08:00 ] 127.0.0.1 /Admin/Brand/brandList.html
+ERR: SQLSTATE[HY000] [2002] 由于目标计算机积极拒绝，无法连接。
+
+

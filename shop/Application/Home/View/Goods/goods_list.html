@@ -1,0 +1,200 @@
+<script type="text/javascript" src="__HOME__js/jquery-1.8.2.min.js"></script>
+        <div class="block box">
+            <div class="blank"></div>
+            <div id="ur_here">
+                当前位置: <a href="#">首页</a> <code>&gt;</code> <a href="#">手机类型</a> <code>&gt;</code> <a href="#">GSM手机</a> 
+            </div>
+        </div>
+        <div class="blank"></div>
+
+        <div class="block box">
+
+        <div class="block clearfix">
+            <div class="AreaL">
+                <h3><span>商品分类</span></h3> 
+                <div id="category_tree" class="box_1">
+                    <volist name="brand_data" id="vo">
+                    <dl>
+                        <dt><a href="#">{$vo.brand_name}</a></dt>
+                        <dd>       </dd>
+                    </dl>
+                    </volist>
+
+
+                </div>
+                <div class="blank"></div><div style="display: block;" class="box" id="history_div">
+                    <h3><span>浏览历史</span></h3>
+                    <div class="box_1">
+
+
+                        <div class="boxCenterList clearfix" id="history_list">
+                        <volist name="goods_history" id="vo">
+
+                            <ul class="clearfix">
+                                <li class="goodsimg"><a href="#" target="_blank"><img src="__UPLOAD__{$vo[goods_smallpic]}" alt="{$vo[goods_name]}" class="B_blue"></a></li>
+                                <li><a href="#" target="_blank" title="{$vo[goods_name]}">{$vo[goods_name]}</a><br />本店售价：<font class="f1">￥{$vo[goods_price]}元</font><br /></li>
+                            </ul>
+                        </volist>
+
+                            <ul id="clear_history">
+                                <a >[清空]</a>
+                            </ul>  
+                        </div>
+                    </div>
+                </div>
+                <div class="blank5"></div>
+
+            </div>
+
+
+            <div class="AreaR">
+
+                <div class="box">
+                    <div class="box_1">
+                        <h3><span>商品筛选</span></h3>
+                        <div class="screeBox">
+                            <strong>品牌：</strong>
+                          <if condition="$brand_id">
+                              <a href="__ACTION__/id/0/price/{$price}">全部</a>
+                              <else />
+                              <span>全部</span>
+                          </if>
+
+
+                            <volist name="brand_data" id="vo">
+                                <if condition="$brand_id eq $vo[id]">
+                                    <a href="#"><span>{$vo.brand_name}</span></a>
+                                    <else />
+                                    <a href="{:U('Goods/goods_list',array('id'=>$vo[id],'price'=>$price))}">{$vo.brand_name}</a>
+                                </if>
+                            </volist>
+                        </div>
+                        <div class="screeBox">
+                            <strong>价格：</strong>
+                            <if condition="$price">
+                                <a href="__ACTION__/id/{$brand_id}/price/0">全部</a>
+                                <else />
+                                <span>全部</span>
+                            </if>
+
+                            <volist name="price_data" id="vo" >
+                                <if condition="$price eq $key">
+                                    <a href="#"><span>{$vo}</span></a>&nbsp;
+                                    <else />
+                                    <a href="__ACTION__/id/{$brand_id}/price/{$key}">{$vo}</a>&nbsp;
+                                </if>
+                            </volist>
+
+                        </div>
+                        <div class="screeBox">
+                            <strong>颜色 :</strong>
+                            <span>全部</span>
+                            <a href="#">灰色</a>&nbsp;
+                            <a href="#">白色</a>&nbsp;
+                            <a href="#">金色</a>&nbsp;
+                            <a href="#">黑色</a>&nbsp;
+                        </div>
+                       <!-- <div class="screeBox">
+                            <strong>屏幕大小 :</strong>
+                            <span>全部</span>
+                            <a href="#">1.75英寸</a>&nbsp;
+                            <a href="#">2.0英寸</a>&nbsp;
+                            <a href="#">2.2英寸</a>&nbsp;
+                            <a href="#">2.6英寸</a>&nbsp;
+                            <a href="#">2.8英寸</a>&nbsp;
+                        </div>-->
+
+
+                    </div>
+                </div>
+                <div class="blank"></div>
+
+
+                <div class="itemTit" id="itemBest">
+
+                    <div class="tit">精品推荐</div>
+                </div>
+                <div id="show_best_area" class="clearfix">
+                    <volist name="goods_data" id="vo" offset="2" length='5'>
+                    <div class="goodsItem">
+                        <a href="{:U('goods_detail','id='.$vo[id])}"><img src="__UPLOAD__{$vo.goods_smallpic}" alt="{$vo.goods_name}" class="goodsimg"></a><br />
+                        <p class="f1"><a href="{:U('goods_detail','id='.$vo[id])}" title="{$vo.goods_name}">{$vo.goods_name}</a></p>
+                        <font class="market">￥{$vo.goods_mprice}元</font><br />
+                        <font class="f1">
+                            ￥{$vo.goods_price}元      </font>
+                    </div>
+                    </volist>
+
+                </div>
+                <div class="blank"></div>
+                <div class="box">
+                    <div class="box_1">
+                        <h3>
+                            <span>商品列表</span>
+                            <form method="GET" class="sort" name="listform">
+                                显示方式：
+                                <a href="#"><img src="__HOME__images/display_mode_list.gif" alt=""></a>
+                                <a href="#"><img src="__HOME__images/display_mode_grid_act.gif" alt=""></a>
+                                <a href="#"><img src="__HOME__images/display_mode_text.gif" alt=""></a>&nbsp;&nbsp;
+
+                                <a href="#"><img src="__HOME__images/goods_id_DESC.gif" alt="按上架时间排序"></a>
+                                <a href="#"><img src="__HOME__images/shop_price_default.gif" alt="按价格排序"></a>
+                                <a href="#"><img src="__HOME__images/last_update_default.gif" alt="按更新时间排序"></a>
+                                <input name="category" value="3" type="hidden" />
+                                <input name="display" value="grid" id="display" type="hidden" />
+                                <input name="brand" value="0" type="hidden" />
+                                <input name="price_min" value="0" type="hidden" />
+                                <input name="price_max" value="0" type="hidden" />
+                                <input name="filter_attr" value="0" type="hidden" />
+                                <input name="page" value="1" type="hidden" />
+                                <input name="sort" value="goods_id" type="hidden" />
+                                <input name="order" value="DESC" type="hidden" />
+                            </form>
+                        </h3>
+                        <form name="compareForm" action="compare.php" method="post" onsubmit="return compareGoods(this);">
+                            <div class="clearfix goodsBox" style="border: medium none; padding: 11px 0pt 10px 5px;">
+                                <volist name="goods_data" id="vo">
+                                    <div class="goodsItem">
+                                    <a href="{:U('goods_detail','id='.$vo[id])}"><img src="__UPLOAD__{$vo.goods_smallpic}" alt="{$vo.goods_name}" class="goodsimg"></a><br />
+                                    <p><a href="{:U('goods_detail','id='.$vo[id])}" title="{$vo.goods_name}">{$vo.goods_name}</a></p>
+                                    <font class="market_s">￥{$vo.goods_mprice}元</font><br />
+                                    <font class="shop_s">￥{$vo.goods_price}元</font><br />
+                                    <a href="#"><img src="__HOME__images/goumai.gif"></a> &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <a href="#"><img src="__HOME__images/shoucang.gif"></a>
+                                </div>
+                                </volist>
+
+
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+                <div class="blank5"></div>
+                <form name="selectPageForm" action="/category.php" method="get">
+                    <div id="pager" class="pagebar">
+                        <span class="f_l " style="margin-right: 10px;">总计 <b>12</b>  个记录</span>
+                        <span class="page_now">1</span>
+                        <a href="#">[2]</a>
+
+                        <a class="next" href="#">下一页</a>    </div>
+                </form>
+            </div>  
+
+        </div>
+
+        </div>
+
+        <div class="blank"></div>
+<script type="text/javascript" >
+
+    $(function () {
+        //清除浏览历史处理
+        $('#clear_history').click(function () {
+            $.post('{:U("Goods/history_del")}');
+            $(this).parents('#history_list').remove();
+
+        })
+    })
+</script>
+

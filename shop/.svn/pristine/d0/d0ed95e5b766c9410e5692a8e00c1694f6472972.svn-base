@@ -1,0 +1,15 @@
+<?php
+//防止xss攻击封装函数
+function cleanData($str)
+{
+//引入文件
+    Vendor('htmlpurifier.library.HTMLPurifier#auto');
+    //获取默认配置
+    $config = \HTMLPurifier_Config::createDefault();
+    //根据配置来设置
+    $purifier = new \HTMLPurifier($config);
+    //过滤字符串
+    $cleanData = $purifier->purify($str);
+    //返回过滤后的字符串
+    return $cleanData;
+}

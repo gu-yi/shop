@@ -1,0 +1,73 @@
+<?php
+namespace Home\Controller;
+
+use Think\Controller;
+
+class CartController extends Controller
+{
+    //购物车列表页
+    public function cart_list()
+    {
+        $cart_data = unserialize(cookie('goods_data'));
+        foreach ($cart_data as $key=>$value){
+        $goods_data = D('Goods')->find($key);
+        $cart_data[$key]['goods_mprice'] = $goods_data['goods_mprice'];
+        $cart_data[$key]['goods_smallpic'] = $goods_data['goods_smallpic'];
+        $cart_data[$key]['goods_name'] = $goods_data['goods_name'];
+        //小计
+        $cart_data[$key]['goods_total'] = $cart_data[$key]['number']*$cart_data[$key]['goods_price'];
+        //市场小计
+        $cart_data[$key]['goods_mtotal'] = $cart_data[$key]['number']*$cart_data[$key]['goods_mprice'];
+        //节约金额
+        $cart_data[$key]['goods_chae'] = $cart_data[$key]['goods_mtotal']-$cart_data[$key]['goods_total'];
+        }
+        $this->assign('cart_data',$cart_data);
+        $this->display();
+    }
+
+    //购物车的添加
+    public function cart_add()
+    {
+        $data = I('post.');
+        //判断用户是否登录
+        if (session('?user_id')){
+
+            //登录后直接存到数据库中
+          $data['goods_attr'] = json_encode($data['goods_attr']);
+          $data['user_id'] = session('user_id');
+          //添加同一件商品处理
+            $where = array('user_id'=>session('user_id'),'goods_id'=>$data['goods)id']);
+        $res = D('Cart')->where($where)->find();
+        //若果商品存在直接数量加一
+            if ($res){
+                D('Cart')->where($where)->setInc('number',1);
+            }else{
+                //插入数据库
+
+                D('Cart')->add($data);
+            }
+        }else{
+            //如果cookie存在数据追加进去
+            if (cookie('goods_data')){
+                //获取cookie中的值
+                $cookie_data = cookie('goods_data');
+                $datas = unserialize($cookie_data);
+                //如果添加同样商品直接数量加一
+               foreach ($datas as $key=>$value){
+                    if ($key == $data['goods_id']){
+                        $value['number']++;
+                        $datas[$key]['number'] = $value['number'];
+                    }else{
+                        $datas[$data['goods_id']] = $data;
+                    }
+                }
+            }else{
+                $datas[$data['goods_id']] = $data;
+            }
+            $cart_str = serialize($datas);
+            cookie('goods_data',$cart_str);
+        }
+        //控制器中直接跳转用redirect;
+        $this->redirect('cart_list');
+    }
+}

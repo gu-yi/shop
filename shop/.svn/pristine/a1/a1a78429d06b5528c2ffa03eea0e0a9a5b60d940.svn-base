@@ -1,0 +1,60 @@
+[ 2017-05-28T14:18:45+08:00 ] 127.0.0.1 /Admin/Brand/brandList.html
+ERR: Think\Controller:diaplay方法不存在！
+
+[ 2017-05-28T14:19:09+08:00 ] 127.0.0.1 /Admin/Brand/css/mine.css
+ERR: 非法操作:css
+
+[ 2017-05-28T14:42:25+08:00 ] 127.0.0.1 /Admin/Index/brandList.html
+ERR: 非法操作:brandList
+
+[ 2017-05-28T14:43:00+08:00 ] 127.0.0.1 /Admin/Index/brandList.html
+ERR: 非法操作:brandList
+
+[ 2017-05-28T14:43:03+08:00 ] 127.0.0.1 /Admin/Index/brandList.html
+ERR: 非法操作:brandList
+
+[ 2017-05-28T14:43:03+08:00 ] 127.0.0.1 /Admin/Index/brandList.html
+ERR: 非法操作:brandList
+
+[ 2017-05-28T14:43:04+08:00 ] 127.0.0.1 /Admin/Index/brandList.html
+ERR: 非法操作:brandList
+
+[ 2017-05-28T14:43:04+08:00 ] 127.0.0.1 /Admin/Index/brandList.html
+ERR: 非法操作:brandList
+
+[ 2017-05-28T14:43:04+08:00 ] 127.0.0.1 /Admin/Index/brandList.html
+ERR: 非法操作:brandList
+
+[ 2017-05-28T14:43:04+08:00 ] 127.0.0.1 /Admin/Index/brandList.html
+ERR: 非法操作:brandList
+
+[ 2017-05-28T14:43:04+08:00 ] 127.0.0.1 /Admin/Index/brandList.html
+ERR: 非法操作:brandList
+
+[ 2017-05-28T14:43:05+08:00 ] 127.0.0.1 /Admin/Index/brandList.html
+ERR: 非法操作:brandList
+
+[ 2017-05-28T14:43:05+08:00 ] 127.0.0.1 /Admin/Index/brandList.html
+ERR: 非法操作:brandList
+
+[ 2017-05-28T14:43:10+08:00 ] 127.0.0.1 /Admin/Index/brandList.html
+ERR: 非法操作:brandList
+
+[ 2017-05-28T14:44:09+08:00 ] 127.0.0.1 /Admin/Index/brandList.html
+ERR: 非法操作:brandList
+
+[ 2017-05-28T14:44:17+08:00 ] 127.0.0.1 /Admin/Brand/css/mine.css
+ERR: 非法操作:css
+
+[ 2017-05-28T18:32:59+08:00 ] 127.0.0.1 /Admin/Brand/index
+ERR: 非法操作:index
+
+[ 2017-05-28T18:33:33+08:00 ] 127.0.0.1 /Admin/Brand/css/mine.css
+ERR: 非法操作:css
+
+[ 2017-05-28T19:02:39+08:00 ] 127.0.0.1 /Admin/index/update
+ERR: 非法操作:update
+
+[ 2017-05-28T20:23:03+08:00 ] 127.0.0.1 /Admin/Brand/delete/id/32.html
+ERR: Think\Model:sql方法不存在！
+

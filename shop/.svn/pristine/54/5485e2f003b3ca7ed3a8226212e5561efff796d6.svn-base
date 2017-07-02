@@ -1,0 +1,22 @@
+<?php
+namespace Home\Controller;
+
+use Think\Controller;
+
+class IndexController extends Controller {
+    public function index()
+    {
+        //获取所有的上【商品】
+        $goods_model = D('Goods');
+        //访问量排行获取
+        $click_data = $goods_model->order('goods_click desc')->select();
+        //添加时间降序
+        $time_data = $goods_model->order('goods_addtime desc')->select();
+        //市场价格排序
+        $mprice_data = $goods_model->order('goods_mprice desc')->select();
+        $this->assign('click_data',$click_data);
+        $this->assign('time_data',$time_data);
+        $this->assign('mprice_data',$mprice_data);
+        $this->display();
+    }
+}

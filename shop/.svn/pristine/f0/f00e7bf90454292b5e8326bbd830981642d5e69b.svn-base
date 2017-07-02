@@ -1,0 +1,80 @@
+[ 2017-06-11T19:33:23+08:00 ] 127.0.0.1 /Admin/Goods/delete
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000627s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001249s ]
+SQL: SHOW COLUMNS FROM `tp_goods` [ RunTime:0.0132s ]
+SQL: SELECT * FROM `tp_goods` WHERE `id` = 62 LIMIT 1   [ RunTime:0.0005s ]
+SQL: UPDATE `tp_goods` SET `goods_status`='0' WHERE `id` = 62 [ RunTime:0.0370s ]
+
+[ 2017-06-11T19:33:24+08:00 ] 127.0.0.1 /Admin/Goods/delete
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000549s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000996s ]
+SQL: SHOW COLUMNS FROM `tp_goods` [ RunTime:0.0127s ]
+SQL: SELECT * FROM `tp_goods` WHERE `id` = 59 LIMIT 1   [ RunTime:0.0005s ]
+SQL: UPDATE `tp_goods` SET `goods_status`='0' WHERE `id` = 59 [ RunTime:0.0004s ]
+
+[ 2017-06-11T19:33:25+08:00 ] 127.0.0.1 /Admin/Goods/delete
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000644s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001051s ]
+SQL: SHOW COLUMNS FROM `tp_goods` [ RunTime:0.0124s ]
+SQL: SELECT * FROM `tp_goods` WHERE `id` = 80 LIMIT 1   [ RunTime:0.0005s ]
+SQL: UPDATE `tp_goods` SET `goods_status`='0' WHERE `id` = 80 [ RunTime:0.0003s ]
+
+[ 2017-06-11T19:33:27+08:00 ] 127.0.0.1 /Admin/Goods/delete
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000907s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001627s ]
+SQL: SHOW COLUMNS FROM `tp_goods` [ RunTime:0.0127s ]
+SQL: SELECT * FROM `tp_goods` WHERE `id` = 81 LIMIT 1   [ RunTime:0.0004s ]
+SQL: UPDATE `tp_goods` SET `goods_status`='0' WHERE `id` = 81 [ RunTime:0.0003s ]
+
+[ 2017-06-11T19:33:28+08:00 ] 127.0.0.1 /Admin/Goods/delete
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000552s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000936s ]
+SQL: SHOW COLUMNS FROM `tp_goods` [ RunTime:0.0123s ]
+SQL: SELECT * FROM `tp_goods` WHERE `id` = 79 LIMIT 1   [ RunTime:0.0004s ]
+SQL: UPDATE `tp_goods` SET `goods_status`='0' WHERE `id` = 79 [ RunTime:0.0002s ]
+
+[ 2017-06-11T19:35:36+08:00 ] 127.0.0.1 /Admin/Attribute/get_attr.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000569s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001033s ]
+SQL: SHOW COLUMNS FROM `tp_cate` [ RunTime:0.0115s ]
+SQL: SHOW COLUMNS FROM `tp_attribute` [ RunTime:0.0111s ]
+SQL: SELECT * FROM `tp_attribute` WHERE ( cate_id=1 )  [ RunTime:0.0006s ]
+
+[ 2017-06-11T19:38:06+08:00 ] 127.0.0.1 /Admin/Attribute/get_attr.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000555s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000989s ]
+SQL: SHOW COLUMNS FROM `tp_cate` [ RunTime:0.0131s ]
+SQL: SHOW COLUMNS FROM `tp_attribute` [ RunTime:0.0092s ]
+SQL: SELECT * FROM `tp_attribute` WHERE ( cate_id=1 )  [ RunTime:0.0004s ]
+
+[ 2017-06-11T19:40:05+08:00 ] 127.0.0.1 /Admin/Attribute/get_attr.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000554s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000951s ]
+SQL: SHOW COLUMNS FROM `tp_cate` [ RunTime:0.0111s ]
+SQL: SHOW COLUMNS FROM `tp_attribute` [ RunTime:0.0094s ]
+SQL: SELECT * FROM `tp_attribute` WHERE ( cate_id=7 )  [ RunTime:0.0004s ]
+
+[ 2017-06-11T19:43:34+08:00 ] 127.0.0.1 /Admin/Attribute/get_attr.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000715s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001133s ]
+SQL: SHOW COLUMNS FROM `tp_cate` [ RunTime:0.0360s ]
+SQL: SHOW COLUMNS FROM `tp_attribute` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `tp_attribute` WHERE ( cate_id=1 )  [ RunTime:0.0004s ]
+
+[ 2017-06-11T19:45:11+08:00 ] 127.0.0.1 /Admin/Attribute/get_attr.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000851s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001507s ]
+SQL: SHOW COLUMNS FROM `tp_cate` [ RunTime:0.0176s ]
+SQL: SHOW COLUMNS FROM `tp_attribute` [ RunTime:0.0108s ]
+SQL: SELECT * FROM `tp_attribute` WHERE ( cate_id=1 )  [ RunTime:0.0004s ]
+

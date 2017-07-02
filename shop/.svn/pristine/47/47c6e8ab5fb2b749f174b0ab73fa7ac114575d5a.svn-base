@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+
+        <title>角色列表</title>
+
+        <link href="__ADMIN__/css/mine.css" type="text/css" rel="stylesheet" />
+        <script type="text/javascript" src="__ADMIN__js/jquery-1.7.2.min.js"></script>
+
+    </head>
+    <body>
+        <style>
+            .tr_color{background-color: #9F88FF}
+        </style>
+        <div class="div_head">
+            <span>
+                <span style="float: left;">当前位置是：角色管理-》角色列表</span>
+                <span style="float: right; margin-right: 8px; font-weight: bold;">
+                    <a style="text-decoration: none;" href="{:U('roleAdd')}">【添加角色】</a>
+                </span>
+            </span>
+        </div>
+        <div></div>
+      
+        <div style="font-size: 13px; margin: 10px 5px;">
+            <table class="table_a" border="1" width="100%">
+                <tbody><tr style="font-weight: bold;">
+                        <td>序号</td>
+                        <td>角色名称</td>
+                        <td>状态</td>
+                      
+                        <td style="text-align: center;" colspan="3">操作</td>
+                    </tr>
+
+                    <foreach name="roleData" item='d'>
+                    <tr id="product1">
+                        <td>{$d['id']}</td>
+                        <td><a href="#">{$d.role_name}</a></td>
+                        <td>{$d['role_status']==0?'禁用':'启用'}</td>
+                        <td><a href="{:U('accessList','id='.$d['id'])}">权限分配</a></td>
+                        <td><a href="{:U('role_update','id='.$d['id'])}">修改</a></td>
+                        <td><a href="javascript:void(0);" data_id="{$d['id']}" class="del">删除</a></td>
+                    </tr>
+                   </foreach>
+                  
+                  
+                    <tr>
+                        <td colspan="20" style="text-align: center;">
+                            [1]
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+   <script type="text/javascript">
+       //删除处理
+       $(function () {
+           $('.del').click(function () {
+
+            var _this = $(this);
+            var id = _this.attr('data_id');
+            $.post('__CONTROLLER__/role_delete',{'id':id},function (data) {
+                console.log(data);
+                if (data.status == 1){
+                    _this.parents('tr').remove();
+                }
+            },'json');
+           });
+       })
+   </script>
+   
+</html>

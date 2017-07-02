@@ -1,0 +1,46 @@
+<?php
+namespace Admin\Controller;
+
+use Think\Controller;
+
+/**
+ * Class CommonController 公共控制器防止翻墙
+ * @package Admin\Controller
+ */
+class CommonController extends Controller
+{
+    public function __construct()
+    {
+        parent::__construct();
+        if (!session('?username')){
+            $this->error('请去登录后操作',U('Login/login'));
+        }
+        //防止用户权限翻墙
+        //用户当前访问路径
+        $nowUrl = strtoupper(CONTROLLER_NAME.ACTION_NAME);
+//dump(!in_array($nowUrl,array('INDEXINDEX','INDEXLEFT','INDEXHEAD','INDEXRIGHT')) );die;
+        //不是超级管理员或者当前不是后台首页则进行控制
+        if (session('username') != 'admin' &&  !in_array($nowUrl,array('INDEXINDEX','INDEXLEFT','INDEXHEAD','INDEXRIGHT')) ) {
+
+                //获取当前用户的权限
+                $assessData = D('Access')->alias('a')->join('left join tp_menu as b on a.menu_id=b.id')->where(array('a.role_id' => session('role_id'), 'b.pid' => array('neq', 0)))->select();
+                //提出权限路由生成新url的数组
+                foreach ($assessData as $key => $value) {
+                    $assessUrl[] = strtoupper($value['menu_controller'] . $value['menu_action']);
+                }
+                //判断当前用户路由是否在权限路由中
+                if (!in_array($nowUrl, $assessUrl)) {
+
+                }
+                //角色禁用后禁止访问
+                $res = D('Role')->where(array('role_status'=>1,'id'=>session('role_id')))->find();
+//                dump($res);die;
+                if(!$res){
+                    $this->error('当前角色已被禁用', U('Index/index'));
+                }
+        }
+
+    }
+
+}
+

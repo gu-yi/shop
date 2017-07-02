@@ -1,0 +1,12 @@
+[ 2017-06-01T23:52:48+08:00 ] 127.0.0.1 /home/Goods/detail/id/1
+ERR: 1052:Champ: 'id' dans where clause est ambigu
+ [ SQL语句 ] : SELECT a.*,b.brand_name FROM tp_goods a left join tp_brand as b on a.brand_id=b.id  WHERE `id` = '1' LIMIT 1  
+
+[ 2017-06-01T23:56:25+08:00 ] 127.0.0.1 /home/Goods/detail/id/1
+ERR: 1052:Champ: 'id' dans where clause est ambigu
+ [ SQL语句 ] : SELECT a.*,b.brand_name FROM tp_goods a left join tp_brand as b on a.brand_id=b.id  WHERE `id` = 'a.1' LIMIT 1  
+
+[ 2017-06-01T23:56:44+08:00 ] 127.0.0.1 /home/Goods/detail/id/1
+ERR: 1052:Champ: 'id' dans where clause est ambigu
+ [ SQL语句 ] : SELECT a.*,b.brand_name FROM tp_goods a left join tp_brand as b on a.brand_id=b.id  WHERE `id` = 'a.id=1' LIMIT 1  
+

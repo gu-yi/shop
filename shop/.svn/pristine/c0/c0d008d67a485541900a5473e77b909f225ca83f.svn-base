@@ -1,0 +1,9 @@
+<?php
+namespace Home\Controller;
+class Stu
+{
+    function dd()
+    {
+        echo 'youyou';
+    }
+}

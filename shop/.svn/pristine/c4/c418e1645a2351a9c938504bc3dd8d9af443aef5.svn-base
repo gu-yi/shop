@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+
+        <title>会员列表</title>
+
+        <link href="__ADMIN__css/mine.css" type="text/css" rel="stylesheet" />
+        <script type="text/javascript" src="__ADMIN__js/jquery-1.7.2.min.js"></script>
+    </head>
+    <body>
+        <style>
+            .tr_color{background-color: #9F88FF}
+        </style>
+        <div class="div_head">
+            <span>
+                <span style="float: left;">当前位置是：商品管理-》商品列表</span>
+                <span style="float: right; margin-right: 8px; font-weight: bold;">
+                    <a style="text-decoration: none;" href="{:U('add')}">【添加商品】</a>
+                </span>
+            </span>
+        </div>
+        <div></div>
+        <div class="div_search">
+            <span>
+                <form action="#" method="get">
+                    品牌<select name="s_product_mark" style="width: 100px;">
+                        <option selected="selected" value="0">请选择</option>
+                        <option value="1">苹果apple</option>
+                    </select>
+                    <input value="查询" type="submit" />
+                </form>
+            </span>
+        </div>
+        <div style="font-size: 13px; margin: 10px 5px;">
+            <table class="table_a" border="1" width="100%">
+                <tbody><tr style="font-weight: bold;">
+                        <td>序号</td>
+                        <td>商品名称</td>
+                        <td>库存</td>
+                        <td>价格</td>
+                        <td>图片</td>
+                        <td>缩略图</td>
+                        <td>品牌</td>
+                        <td>创建时间</td>
+                        <td align="center" colspan="3">操作</td>
+                    </tr>
+                <volist name="data" id="d">
+                    <tr id="product1">
+                        <td>{$d.id}</td>
+                        <td><a href="#">{$d.goods_name}</a></td>
+                        <td>{$d.goods_count}</td>
+                        <td>{$d.goods_price}</td>
+                        <td><img src="__UPLOAD__{$d.goods_bigpic}" height="60" width="60"></td>
+                        <td><img src="__UPLOAD__{$d.goods_smallpic}" height="40" width="40"></td>
+                        <td>{$d.brand_name}</td>
+                        <td>{$d['goods_addtime']|date='Y-m-d H:i:s',###}</td>
+                        <td><a href="{:U('goods/pic','id='.$d['id'])}">相册管理</a></td>
+                        <td><a href="{:U('goods/update','id='.$d['id'])}">修改</a></td>
+                        <td><a class="goods_del" data_id="{$d.id}" href="javascript:;" ><if condition='$d["goods_status"] eq 1'>下架<else/>上架</if></a></td>
+                    </tr>
+                </volist>
+                    <tr>
+
+                        <td colspan="20" style="text-align: center;">
+                            {$show}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+<script type="text/javascript">
+    $(function () {
+        $('.goods_del').click(function () {
+            var _this = $(this);
+            var id = $(this).attr('data_id');
+           //发送请求
+            $.post('__CONTROLLER__/delete',{'id':id},function (data) {
+                if (data.status == 1){
+                    _this.text(data.info);
+                }else {
+                    alert(data.info);
+                }
+
+            },'json')
+        })
+
+    })
+</script>
+
+</html>

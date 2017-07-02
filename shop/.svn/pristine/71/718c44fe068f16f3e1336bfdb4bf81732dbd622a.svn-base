@@ -1,0 +1,125 @@
+<?php
+namespace Admin\Controller;
+
+use Home\Controller\Stu;
+use Think\Controller;
+use Think\Model;
+
+class TestController extends Controller
+{
+    public function test()
+    {
+        $time =time();
+        $this->assign('time',$time);
+        $str ='weeDDrwerFGJTG';
+        $this->assign('str',$str);
+        $str1 = '';
+    $this->assign('str1',$str1);
+    $a = 100;
+        $b = 200;
+        $this->assign('a',$a);
+        $this->assign('b',$b);
+        $arr = array(
+            array('gfdg','ujiyi','rr','reww','awgfj','erfweq'),
+            array('44','66','99','--','qq','33'),
+        );
+        $this->assign('arr',$arr);
+  $n = date('w');
+  $this->assign('n',$n);
+        $this->display();
+    }
+    //娣诲姞鏂规硶
+    public function add()
+    {
+        if(IS_POST){
+            $name = $_POST['min'];
+            $pai = $_POST['pai'];
+
+            $arr = array(
+                'brand_name' => $name,
+                'brand_sort' => $pai,
+            );
+            $obj = D('Brand');
+            $rs = $obj->add($arr);
+            if ($rs) {
+                $this->success('娣诲姞鎴愬姛',U('getall'),3);
+            }else{
+                $this->error('娣诲姞澶辫触',U('add'),3);
+            }
+        }else{
+            $this->display('add');
+        }
+
+    }
+    //鏌ヨ涓�鏉℃柟娉�
+    public function getone()
+    {
+        $obj = D('Brand');
+        $obj->find($id);
+    }
+    //鏌ヨ涓�缁勬柟娉�
+    public function getall()
+    {
+        $obj = D('Brand');
+        $arr = $obj->order('brand_sort')->select();
+       $this->assign('arr',$arr);
+       $this->display();
+
+    }
+    //鏇存柊鏉℃柟娉�
+    public function update()
+    {
+        if (IS_POST){
+//            dump($_POST);die;
+            $arr = array(
+                'id' =>$_POST['id'],
+                'brand_name' =>$_POST['name'],
+                'brand_sort' =>$_POST['sort'],
+            );
+            $obj = D('Brand');
+           $rs = $obj->save($arr);
+            if ($rs) {
+                $this->success('璺熸柊鎴愬姛',U('getall'),3);
+            }else{
+                $this->error('璺熸柊澶辫触');
+            }
+        }else{
+            $id =$_GET['id'];
+           /* $name = $_GET['name'];
+            $sort =$_GET['sort'];
+            $this->assign('name',$name);
+            $this->assign('sort',$sort);
+            $this->assign('id',$id);*/
+         $model = M('brand');
+           $data = $model->find($id);
+            $this->assign('name',$data['brand_name']);
+            $this->assign('sort',$data['brand_sort']);
+            $this->display('update');
+        }
+
+    }
+
+
+    //鍒犻櫎鏂规硶
+    public function delete()
+    {
+
+        $id = $_GET['id'];
+//        echo $id;die;
+        $obj = D('Brand');
+       $rs= $obj->delete($id);
+       if ($rs) {
+          $this->success('鍒犻櫎鎴愬姛',U('getall'),3);
+       }else{
+
+       }
+    }
+    public function test11()
+    {
+        $n = D('Test');
+    }
+    function test22()
+    {
+    	$this->success()
+    }
+}

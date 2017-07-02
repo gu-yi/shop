@@ -1,0 +1,17 @@
+<?php
+namespace Home\Controller;
+
+use Think\Controller;
+
+class GoodsController extends Controller
+{
+    public function detail()
+    {
+        $id = I('id');
+        $model = D('Goods');
+        $data = $model->field('a.*,b.brand_name')->alias('a')->join('left join tp_brand as b on a.brand_id=b.id')->where(array('a.id='.$id,'a.goods_status=1'))->find();
+//        dump($data);die;
+        $this->assign('data',$data);
+        $this->display();
+    }
+}

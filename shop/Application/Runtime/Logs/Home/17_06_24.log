@@ -1,0 +1,225 @@
+[ 2017-06-24T13:33:27+08:00 ] 127.0.0.1 /Home/Goods/goods_detail/id/86.html
+ERR: 1064:Erreur de syntaxe près de '0 )' à la ligne 1
+ [ SQL语句 ] : SELECT * FROM `tp_goods` WHERE ( id in 0 ) 
+
+[ 2017-06-24T14:09:27+08:00 ] 127.0.0.1 /Home/Goods/goods_detail/id/86.html
+ERR: 1064:Erreur de syntaxe près de '86 )' à la ligne 1
+ [ SQL语句 ] : SELECT * FROM `tp_goods` WHERE ( id in 86 ) 
+
+[ 2017-06-24T14:47:16+08:00 ] 127.0.0.1 /Home/Goods/history_del.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000748s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001216s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000663s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000846s ]
+
+[ 2017-06-24T14:47:23+08:00 ] 127.0.0.1 /Home/Goods/history_del.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000780s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001165s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000692s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000805s ]
+
+[ 2017-06-24T14:49:38+08:00 ] 127.0.0.1 /Home/Goods/history_del.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000646s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001049s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000714s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000819s ]
+
+[ 2017-06-24T16:28:50+08:00 ] 127.0.0.1 /Home/Goods/verify
+ERR: 非法操作:verify
+
+[ 2017-06-24T16:28:55+08:00 ] 127.0.0.1 /Home/Goods/verify0.43582270181935634
+ERR: 非法操作:verify0.43582270181935634
+
+[ 2017-06-24T16:28:55+08:00 ] 127.0.0.1 /Home/Goods/verify0.7477310985784162
+ERR: 非法操作:verify0.7477310985784162
+
+[ 2017-06-24T16:28:56+08:00 ] 127.0.0.1 /Home/Goods/verify0.10983511753813469
+ERR: 非法操作:verify0.10983511753813469
+
+[ 2017-06-24T16:28:56+08:00 ] 127.0.0.1 /Home/Goods/verify0.9920884585341532
+ERR: 非法操作:verify0.9920884585341532
+
+[ 2017-06-24T16:28:56+08:00 ] 127.0.0.1 /Home/Goods/verify0.9007185705888716
+ERR: 非法操作:verify0.9007185705888716
+
+[ 2017-06-24T16:28:56+08:00 ] 127.0.0.1 /Home/Goods/verify0.4584978271578326
+ERR: 非法操作:verify0.4584978271578326
+
+[ 2017-06-24T16:28:57+08:00 ] 127.0.0.1 /Home/Goods/verify0.07486541391456591
+ERR: 非法操作:verify0.07486541391456591
+
+[ 2017-06-24T16:28:57+08:00 ] 127.0.0.1 /Home/Goods/verify0.2787794448335674
+ERR: 非法操作:verify0.2787794448335674
+
+[ 2017-06-24T16:28:57+08:00 ] 127.0.0.1 /Home/Goods/verify0.7141259331240701
+ERR: 非法操作:verify0.7141259331240701
+
+[ 2017-06-24T16:28:57+08:00 ] 127.0.0.1 /Home/Goods/verify0.19465026278452568
+ERR: 非法操作:verify0.19465026278452568
+
+[ 2017-06-24T16:28:57+08:00 ] 127.0.0.1 /Home/Goods/verify0.1594742461643861
+ERR: 非法操作:verify0.1594742461643861
+
+[ 2017-06-24T16:28:58+08:00 ] 127.0.0.1 /Home/Goods/verify0.6900326861416199
+ERR: 非法操作:verify0.6900326861416199
+
+[ 2017-06-24T16:28:58+08:00 ] 127.0.0.1 /Home/Goods/verify0.5409688918871012
+ERR: 非法操作:verify0.5409688918871012
+
+[ 2017-06-24T16:28:58+08:00 ] 127.0.0.1 /Home/Goods/verify0.139000148702638
+ERR: 非法操作:verify0.139000148702638
+
+[ 2017-06-24T16:40:58+08:00 ] 127.0.0.1 /Home/Comment/verify.html0.2671840736142519
+ERR: 非法操作:verify.html0.2671840736142519
+
+[ 2017-06-24T16:46:45+08:00 ] 127.0.0.1 /Home/Comment/verify.html0.6219585440684763
+ERR: 非法操作:verify.html0.6219585440684763
+
+[ 2017-06-24T16:51:10+08:00 ] 127.0.0.1 /Home/Goods/goods_detail.html
+ERR: 1064:Erreur de syntaxe près de ')' à la ligne 1
+ [ SQL语句 ] : UPDATE `tp_goods` SET `goods_click`=goods_click+1 WHERE ( id= )
+
+[ 2017-06-24T16:52:14+08:00 ] 127.0.0.1 /Home/Goods/goods_detail.html
+ERR: 1064:Erreur de syntaxe près de ')' à la ligne 1
+ [ SQL语句 ] : UPDATE `tp_goods` SET `goods_click`=goods_click+1 WHERE ( id= )
+
+[ 2017-06-24T16:52:18+08:00 ] 127.0.0.1 /Home/Goods/goods_detail.html
+ERR: 1064:Erreur de syntaxe près de ')' à la ligne 1
+ [ SQL语句 ] : UPDATE `tp_goods` SET `goods_click`=goods_click+1 WHERE ( id= )
+
+[ 2017-06-24T16:52:51+08:00 ] 127.0.0.1 /Home/Goods/goods_detail.html
+ERR: 1064:Erreur de syntaxe près de ')' à la ligne 1
+ [ SQL语句 ] : UPDATE `tp_goods` SET `goods_click`=goods_click+1 WHERE ( id= )
+
+[ 2017-06-24T16:52:57+08:00 ] 127.0.0.1 /Home/Goods/goods_detail/id/85.html
+ERR: 1064:Erreur de syntaxe près de ') )' à la ligne 1
+ [ SQL语句 ] : SELECT * FROM `tp_goods` WHERE ( id in (85,) ) 
+
+[ 2017-06-24T16:53:00+08:00 ] 127.0.0.1 /Home/Goods/goods_detail/id/85.html
+ERR: 1064:Erreur de syntaxe près de ') )' à la ligne 1
+ [ SQL语句 ] : SELECT * FROM `tp_goods` WHERE ( id in (85,) ) 
+
+[ 2017-06-24T16:53:00+08:00 ] 127.0.0.1 /Home/Goods/goods_detail/id/85.html
+ERR: 1064:Erreur de syntaxe près de ') )' à la ligne 1
+ [ SQL语句 ] : SELECT * FROM `tp_goods` WHERE ( id in (85,) ) 
+
+[ 2017-06-24T16:53:29+08:00 ] 127.0.0.1 /Home/Goods/goods_list.html
+ERR: 1064:Erreur de syntaxe près de ') )' à la ligne 1
+ [ SQL语句 ] : SELECT * FROM `tp_goods` WHERE ( id in (85,) ) 
+
+[ 2017-06-24T16:53:34+08:00 ] 127.0.0.1 /Home/Goods/goods_list.html
+ERR: 1064:Erreur de syntaxe près de ') )' à la ligne 1
+ [ SQL语句 ] : SELECT * FROM `tp_goods` WHERE ( id in (85,) ) 
+
+[ 2017-06-24T16:53:36+08:00 ] 127.0.0.1 /Home/Goods/goods_list.html
+ERR: 1064:Erreur de syntaxe près de ') )' à la ligne 1
+ [ SQL语句 ] : SELECT * FROM `tp_goods` WHERE ( id in (85,) ) 
+
+[ 2017-06-24T16:56:58+08:00 ] 127.0.0.1 /Home/Goods/goods_list.html
+ERR: 1064:Erreur de syntaxe près de ') )' à la ligne 1
+ [ SQL语句 ] : SELECT * FROM `tp_goods` WHERE ( id in (85,) ) 
+
+[ 2017-06-24T16:57:03+08:00 ] 127.0.0.1 /Home/Goods/goods_list.html
+ERR: 1064:Erreur de syntaxe près de ') )' à la ligne 1
+ [ SQL语句 ] : SELECT * FROM `tp_goods` WHERE ( id in (85,) ) 
+
+[ 2017-06-24T17:01:29+08:00 ] 127.0.0.1 /Home/Goods/history_del.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000610s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001047s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001140s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001352s ]
+
+[ 2017-06-24T17:01:40+08:00 ] 127.0.0.1 /Home/Goods/history_del.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001563s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002063s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000473s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000609s ]
+
+[ 2017-06-24T22:56:53+08:00 ] 127.0.0.1 /Home/Goods/goods_detail/id/83.html
+ERR: 1054:Champ 'c.og_goods_id' inconnu dans where clause
+ [ SQL语句 ] : SELECT b.user_name,c.order_addtime FROM tp_goods_order a  left join tp_user as b on a.user_id = b.id, tp_order as c   WHERE a.order_id = 'c.id' AND c.og_goods_id = '83' 
+
+[ 2017-06-24T22:59:40+08:00 ] 127.0.0.1 /Home/Goods/goods_detail/id/83.html
+ERR: 1054:Champ 'c.og_goods_id' inconnu dans where clause
+ [ SQL语句 ] : SELECT b.user_name,c.order_addtime FROM tp_goods_order a  left join tp_user as b on a.user_id = b.id, tp_order as c   WHERE a.order_id = 'c.id' AND c.og_goods_id = '83' 
+
+[ 2017-06-24T23:17:15+08:00 ] 127.0.0.1 /Home/Cart/cart_all_delete
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000804s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001412s ]
+SQL: SHOW COLUMNS FROM `tp_cart` [ RunTime:0.1395s ]
+SQL: DELETE FROM `tp_cart` WHERE `user_id` = 10 [ RunTime:0.0003s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000831s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000977s ]
+
+[ 2017-06-24T23:24:17+08:00 ] 127.0.0.1 /Home/Cart/cart_all_delete
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000625s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001051s ]
+SQL: SHOW COLUMNS FROM `tp_cart` [ RunTime:0.0129s ]
+SQL: DELETE FROM `tp_cart` WHERE `user_id` = 10 [ RunTime:0.0003s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000733s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000856s ]
+
+[ 2017-06-24T23:25:54+08:00 ] 127.0.0.1 /Home/Cart/cart_all_delete
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000748s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001169s ]
+SQL: SHOW COLUMNS FROM `tp_cart` [ RunTime:0.0136s ]
+SQL: DELETE FROM `tp_cart` WHERE `user_id` = 10 [ RunTime:0.0003s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000847s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001002s ]
+
+[ 2017-06-24T23:28:55+08:00 ] 127.0.0.1 /Home/Cart/cart_all_delete
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000979s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001598s ]
+SQL: SHOW COLUMNS FROM `tp_cart` [ RunTime:0.0707s ]
+SQL: DELETE FROM `tp_cart` WHERE `user_id` = 10 [ RunTime:0.0003s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000699s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000834s ]
+
+[ 2017-06-24T23:29:32+08:00 ] 127.0.0.1 /Home/Cart/cart_all_delete
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000761s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001177s ]
+SQL: SHOW COLUMNS FROM `tp_cart` [ RunTime:0.0120s ]
+SQL: DELETE FROM `tp_cart` WHERE `user_id` = 10 [ RunTime:0.0004s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001089s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001213s ]
+
+[ 2017-06-24T23:39:55+08:00 ] 127.0.0.1 /Home/Cart/cart_all_delete
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000712s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001163s ]
+SQL: SHOW COLUMNS FROM `tp_cart` [ RunTime:0.0126s ]
+SQL: DELETE FROM `tp_cart` WHERE `user_id` = 10 [ RunTime:0.0003s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000792s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000914s ]
+
+[ 2017-06-24T23:42:44+08:00 ] 127.0.0.1 /Home/Cart/cart_all_delete
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000647s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001028s ]
+SQL: SHOW COLUMNS FROM `tp_cart` [ RunTime:0.0443s ]
+SQL: DELETE FROM `tp_cart` WHERE `user_id` = 10 [ RunTime:0.0004s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000697s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000813s ]
+

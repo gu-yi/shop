@@ -1,0 +1,23 @@
+[ 2017-06-08T00:20:05+08:00 ] 127.0.0.1 /Home/Goods/goods_detail/id/79.html
+ERR: 1054:Champ 'b.attr_name' inconnu dans field list
+ [ SQL语句 ] : SELECT a.*,b.attr_name,b.attr_sel FROM tp_goodsattr a left join tp_attribute on a.attr_id=b.id  WHERE ( goods_id=79 ) 
+
+[ 2017-06-08T08:29:18+08:00 ] 127.0.0.1 /Home/Goods/goods_list/id/0/price/$price
+ERR: 1064:Erreur de syntaxe près de ')' à la ligne 1
+ [ SQL语句 ] : SELECT * FROM `tp_goods` WHERE (  goods_status=1  and goods_price>$price and goods_price< ) 
+
+[ 2017-06-08T14:00:37+08:00 ] 127.0.0.1 /Home/Login/verify
+ERR: 非法操作:verify
+
+[ 2017-06-08T14:00:40+08:00 ] 127.0.0.1 /Home/Login/verify/t/0.06769303446129538
+ERR: 非法操作:verify
+
+[ 2017-06-08T20:43:53+08:00 ] 127.0.0.1 /Home/login/logn_out.html
+ERR: 非法操作:logn_out
+
+[ 2017-06-08T20:44:13+08:00 ] 127.0.0.1 /Home/login/logn_out.html
+ERR: 非法操作:logn_out
+
+[ 2017-06-08T22:06:29+08:00 ] 127.0.0.1 /Home/Cart/cart_add/goods_id/4.html
+ERR: 模板不存在:./Application/Home/View/Cart/cart_add.html
+

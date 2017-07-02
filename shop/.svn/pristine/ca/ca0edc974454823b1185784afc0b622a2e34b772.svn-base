@@ -1,0 +1,4 @@
+[ 2017-06-07T19:04:37+08:00 ] 127.0.0.1 /home/Goods/detail
+ERR: 1064:Erreur de syntaxe près de ') AND (  a.goods_status=1 ) LIMIT 1' à la ligne 1
+ [ SQL语句 ] : SELECT a.*,b.brand_name FROM tp_goods a left join tp_brand as b on a.brand_id=b.id  WHERE (  a.id= ) AND (  a.goods_status=1 ) LIMIT 1  
+

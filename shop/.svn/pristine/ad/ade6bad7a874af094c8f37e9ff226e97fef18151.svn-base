@@ -1,0 +1,73 @@
+<?php
+namespace Home\Controller;
+
+use Think\Controller;
+
+class OrderController extends Controller
+{
+    public function buy()
+    {
+        if (IS_POST){
+          $data = $_POST;
+
+          $goods_data = D('Goods')->where(array('id'=>$data['goods_id']))->find();
+          $data['goods_name'] = $goods_data['goods_name'];
+          $data['goods_mprice'] = $goods_data['goods_mprice'];
+          //总价
+          $data['goods_total'] = $goods_data['goods_price']*$data['number'];
+          //方便循环显示变成2伪数组
+          $buy_data[]=$data;
+          //获取收货地址信息
+            $lo_data = D('Location')->where(array('user_id'=>session('user_id')))->find();
+            $this->assign('lo_data',$lo_data);
+            $this->assign('buy_data',$buy_data);
+            $this->assign('order_data',serialize($data));
+            $this->display();
+
+        }
+
+
+    }
+    //订单处理
+    public function buy_add()
+    {
+        if (IS_POST){
+            $data = $_POST;
+            $goods_data = unserialize($data['order_data']);
+            $datas['order_number'] = date('YmdHis').session('user_id');
+            $datas['user_id'] =session('user_id');
+            $datas['order_addtime'] =time();
+            $datas['order_price'] =$goods_data['goods_total'];
+            $datas['order_pay'] =$data['order_pay'];
+            $datas['location_id'] =$data['location_id'];
+            $datas['order_exp'] =$data['order_exp'];
+            //实例化添加进数据库
+            $res = D('Order')->add($datas);
+            if ($res){
+                //信息廷加进订单表
+                $goods_order['order_id']=$res;
+                $goods_order['user_id']=session('user_id');
+                $goods_order['og_price']=$goods_data['price'];
+                $goods_order['og_number']=$datas['order_number'];
+                $goods_order['og_total_price']=$datas['order_price'];
+                $goods_order['og_goods_id']=$goods_data['goods_id'];
+                $goods_order['og_goods_attr']=serialize($goods_data['goods_attr']);
+                //添加进数据库
+                D('goodsOrder')->add($goods_order);
+               //$this->success('订单生成中',U('Order/order_list',''));
+                //增加成功跳转到订单详情，并且将订单号给传递过去
+                $this->redirect('Order/order_list',array('order_id'=>$goods_order['order_id']));
+            }else{
+                $this->error('提交失败');
+            }
+        }
+    }
+    //订单详情页
+    public function order_list()
+    {
+        $id = I('order_id');
+        $data = D('Order')->where(array('user_id'=>session('user_id'),'id'=>$id))->find();
+        $this->assign('data',$data);
+        $this->display();
+    }
+}

@@ -1,0 +1,28 @@
+[ 2017-06-04T19:37:58+08:00 ] 127.0.0.1 /Admin/Goods/picDel
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001236s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002110s ]
+SQL: SHOW COLUMNS FROM `tp_pic` [ RunTime:0.0127s ]
+SQL: DELETE FROM `tp_pic` WHERE `id` = 34 [ RunTime:0.0592s ]
+SQL: SELECT * FROM `tp_pic` WHERE `id` = 34 LIMIT 1   [ RunTime:0.0004s ]
+NOTIC: [2] unlink(D:/wwwtp/Uploads/): Permission denied D:\wwwtp\Application\Admin\Controller\GoodsController.class.php 第 188 行.
+NOTIC: [2] unlink(D:/wwwtp/Uploads/): Permission denied D:\wwwtp\Application\Admin\Controller\GoodsController.class.php 第 189 行.
+
+[ 2017-06-04T20:56:02+08:00 ] 127.0.0.1 /Admin/System/menuList.html
+ERR: 无法加载控制器:System
+
+[ 2017-06-04T21:02:08+08:00 ] 127.0.0.1 /Admin/System/menuList.html
+ERR: Think\Controller:dispaly方法不存在！
+
+[ 2017-06-04T22:57:38+08:00 ] 127.0.0.1 /Admin/System/accessList.html
+ERR: 非法操作:accessList
+
+[ 2017-06-04T23:00:12+08:00 ] 127.0.0.1 /Admin/System/accessList.html
+ERR: Think\Controller:dispaly方法不存在！
+
+[ 2017-06-04T23:00:42+08:00 ] 127.0.0.1 /Admin/System/role_list.html
+ERR: 非法操作:role_list
+
+[ 2017-06-04T23:01:08+08:00 ] 127.0.0.1 /Admin/System/role_list.html
+ERR: 非法操作:role_list
+

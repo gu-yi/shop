@@ -1,0 +1,93 @@
+<?php
+namespace Admin\Controller;
+
+use Think\Controller;
+use Think\Image;
+
+class SystemController extends Controller
+{
+    //重复使用模型处理
+    public $menuModel;
+    public $roleModel;
+    public function __construct()
+    {
+        parent::__construct();
+        $this->menuModel = D('Menu');
+        $this->roleModel = D('Role');
+    }
+
+    /**
+     * 权限菜单列表显示
+     */
+    public function menuList()
+    {
+        $menuData = $this->menuModel->select();
+        $this->assign('menuData',$menuData);
+        $this->display();
+    }
+    /**
+     * 权限菜单列表增加
+     */
+    public function menuAdd()
+    {
+        //处理提交数据
+        if (IS_POST){
+            $data = I('post.');
+//            dump($menuData);die;
+           $res  = $this->menuModel->add($data);
+            if ($res){
+                $this->success('添加成功',U('menuList'));die;
+            }else{
+                $this->error('添加失败');
+            }
+
+        }
+        //获取所有菜单栏
+        $datas = $this->menuModel->select();
+        //树形显示菜单
+        $treeData =  getTree($datas);
+        $this->assign('datas',$treeData);
+        $this->display();
+    }
+
+    /**
+     * 角色展示
+     */
+    public function roleList()
+    {
+        $roleData = $this->roleModel->select();
+        $this->assign('roleData',$roleData);
+        $this->display();
+    }
+
+    /**
+     * 角色添加
+     */
+    public function roleAdd()
+    {
+        if (IS_POST){
+            $data = I('post.');
+          $res = $this->roleModel->add($data);
+            if ($res){
+                $this->success('添加成功',U('roleList'));die;
+            }else{
+                $this->error('添加失败');
+            }
+        }
+        $this->display();
+    }
+
+    public function accessList()
+    {
+        //查询要分配的权限的角色
+        $id = I('id');
+        $data = $this->roleModel->find($id);
+        $this->assign('data',$data);
+        //显示所有的权限
+        $menuData = $this->menuModel->select();
+        $menuData = list_to_tree($menuData);
+//       print_r($menuData);die;
+        $this->assign('menuData',$menuData);
+        $this->display();
+    }
+}

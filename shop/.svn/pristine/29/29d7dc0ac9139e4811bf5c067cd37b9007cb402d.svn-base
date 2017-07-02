@@ -1,0 +1,70 @@
+<?php
+namespace Admin\Controller;
+
+class CateController extends CommonController
+{
+    public $cateModel;
+    public function __construct()
+    {
+        parent::__construct();
+        $this->cateModel = D('Cate');
+    }
+
+    /**
+     * 商品类型列表
+     */
+    public function cate_list()
+    {
+        $cate_data = $this->cateModel->select();
+        $this->assign('cate_data',$cate_data);
+        $this->display();
+    }
+    /**
+     * 商品类型增加
+     */
+    public function cate_add()
+    {
+        if (IS_POST){
+            $data = I('post.');
+             $res =  $this->cateModel->add($data);
+            if ($res){
+                $this->success('添加成功',U('cate_list'));die;
+            }else{
+                $this->error('添加失败');
+            }
+        }
+        $this->display();
+    }
+    /**
+     * 类型修改
+     */
+    public function cate_update()
+    {
+        if (IS_POST){
+            $data = I('post.');
+            $res = $this->cateModel->save($data);
+            if ($res){
+                $this->success('操作成功',U('cate_list'));die;
+            }else{
+                $this->error('操作失败');
+            }
+        }
+        $id = I('id');
+        $cate_data = $this->cateModel->find($id);
+        $this->assign('cate_data',$cate_data);
+        $this->display();
+    }
+    /**
+     * 类型删除
+     */
+    public function cate_delete()
+    {
+        $id = I('id');
+        $res = $this->cateModel->delete($id);
+        if ($res){
+            $this->success('操作成功');die;
+        }else{
+            $this->error('操作失败');
+        }
+    }
+}

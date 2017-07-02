@@ -1,0 +1,156 @@
+<?php
+namespace Home\Controller;
+
+use Think\Controller;
+use Think\Page;
+use Think\Verify;
+
+class GoodsController extends Controller
+{
+    //商品列表页
+	public function goods_list()
+    {
+        $brand_id = !empty(I('id'))?I('id'):0;
+        //拼接sql
+        $where = ' goods_status=1 ';
+        if ($brand_id){
+            $where .=' and brand_id='.$brand_id;
+        }
+        //获取价格区间
+        $price = !empty(I('price'))?I('price'):0;
+        $price_arr = explode('-',$price);
+        if ($price){
+            $where .= ' and goods_price>'.$price_arr[0].' and goods_price<'.$price_arr[1];
+        }
+
+        //获取商品数据
+        $goods_data = D('Goods')->where($where)->select();
+        $this->assign('goods_data',$goods_data);
+        //获取所有品牌信息
+        $brand_data = D('Brand')->where('brand_status=1')->select();
+        $this->assign('brand_data',$brand_data);
+        //品牌id数据
+      $this->assign('brand_id',$brand_id);
+      //价格区间数据
+      $this->assign('price_data',getPrice());
+      $this->assign('price',$price);
+        //获取浏览记录
+        $goods_history = get_history();
+        $this->assign ('goods_history',$goods_history);//显示浏览记录
+        $this->display();
+
+    }
+			
+	//商品详情页
+    public function goods_detail()
+    {
+     $id = I('id');//商品id
+     $time = time();//当前时间
+     //记录客户浏览记录
+        //如是COOKIE 里面不为空，则往里面增加一个商品ID
+        if (cookie('history')){
+            //取得COOKIE里面的值，并用逗号把它切割成一个数组
+            $history = explode(',', cookie('history'));
+            //dump($history);die;
+
+            //在这个数组的开头插入当前正在浏览的商品ID
+            array_unshift($history, $id);
+
+            //去除数组里重复的值
+            $history = array_unique($history);
+
+            //当数组的长度大于4里循环执行里面的代码
+            while (count($history) > 4){
+
+                //将数组最后一个单元弹出，直到它的长度小于等于5为止
+                array_pop($history);
+            }
+
+            //把这个数组用逗号连成一个字符串写入COOKIE，并设置其过期时间为30天
+            cookie('history', implode(',', $history), $time + 3600 * 24 * 30);
+
+        }else{
+
+            //如果COOKIE里面为空，则把当前浏览的商品ID写入COOKIE ，这个只在第一次浏览该网站时发生
+            cookie('history', $id, $time + 3600 * 24 * 30);
+        }
+
+        //判断文件是否存在 以及文件时效
+        //echo " __ROOT__/Uploads/goods/goods_detail_'.$id.'.html" ;die;
+        //if (file_exists('./goods/goods_detail_'.$id.'.html') && filemtime('./goods/goods_detail_'.$id.'.html')+3600 >time()){
+            //require ('./goods/goods_detail_'.$id.'.html');
+       // }else{
+     //开启缓存
+        //ob_start();
+     //设置商品查询一次 浏览次数自动加1
+     D('Goods')->where('id='.$id)->setInc('goods_click',1);
+        //视图操作
+    $data = D('goodsView')->where(array('id='.$id,'goods_status=1'))->find();
+      // dump($data);die;
+        //获取属性数据
+        $goods_attr = D('Goodsattr')->alias('a')->field('a.*,b.attr_name,b.attr_sel')->join('left join tp_attribute as b on a.attr_id=b.id')->where(array('goods_id'=>$id,'b.attr_sel'=>1))->select();
+
+      foreach ($goods_attr as $key=>$value){
+          $goods_attr[$key]['child']=explode(',',$value['goods_attr_val']);
+      }
+        //获取商品相册
+        $pic_data = D('Pic')->where(array('goods_id'=>$id))->select();
+
+        //获取浏览记录
+        $goods_history = get_history();
+        //获取显示评论
+        $comModel = D('Comment');
+        //分页
+        //获取总计录数
+        $count = $comModel->count();
+        //实例化扉页
+        $page = new Page($count,2);
+        $page->setConfig('next','下一页');
+        $page->setConfig('prev','上一页');
+        $page->setConfig('end','末页');
+        $page->setConfig('%FIRST%','首页');
+        $page->setConfig('current','当前页');
+        //显示分页
+        $show = $page->show();
+
+        $com_data = $comModel->where(array('com_goodsid'=>$id))->limit($page->firstRow.','.$page->listRows)->select();
+        //$com_data = getTree($com_data);
+        $this->assign('com_data',$com_data);//评论数据
+        $this->assign('show',$show);//分页
+        $this->assign('count',$count);//总评论数
+        $this->assign ('goods_history',$goods_history);//显示浏览记录
+        $this->assign('pic_data',$pic_data);//商品图片数据
+      $this->assign('data',$data);//商品数据
+      $this->assign('goods_attr',$goods_attr);//属性数据
+        $this->display();
+       // $content = ob_get_contents();
+       // ob_end_clean();
+       //echo $content;
+       // file_put_contents('./goods/goods_detail_'.$id.'.html',$content);
+       // }
+    }
+
+    /**
+     * 浏览历史的清除
+     */
+    public function history_del(){
+        //清除浏览历史cookie的值
+        cookie('history',null);
+    }
+    //验证码
+    public function verify(){
+        $config =	array(
+            'useImgBg'  =>  false,           // 使用背景图片
+            'fontSize'  =>  12,              // 验证码字体大小(px)
+            'useCurve'  =>  false,            // 是否画混淆曲线
+            'useNoise'  =>  false,            // 是否添加杂点
+            'imageH'    =>  20,               // 验证码图片高度
+            'imageW'    =>  80,               // 验证码图片宽度
+            'length'    =>  4,               // 验证码位数
+            'fontttf'   =>  '6.ttf',              // 验证码字体，不设置随机获取
+        );
+        $verify = new Verify($config);
+        $verify->entry();
+
+    }
+}

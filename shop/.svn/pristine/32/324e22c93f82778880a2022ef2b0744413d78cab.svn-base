@@ -1,0 +1,125 @@
+<?php
+namespace Admin\Controller;
+
+use Think\Controller;
+use Think\Image;
+
+class SystemController extends Controller
+{
+    //重复使用模型处理
+    public $menuModel;
+    public $roleModel;
+    public $accessModel;
+    public function __construct()
+    {
+        parent::__construct();
+        $this->menuModel = D('Menu');
+        $this->roleModel = D('Role');
+        $this->accessModel = D('Access');
+    }
+
+    /**
+     * 权限菜单列表显示
+     */
+    public function menuList()
+    {
+        $menuData = $this->menuModel->select();
+        $this->assign('menuData',$menuData);
+        $this->display();
+    }
+    /**
+     * 权限菜单列表增加
+     */
+    public function menuAdd()
+    {
+        //处理提交数据
+        if (IS_POST){
+            $data = I('post.');
+//            dump($menuData);die;
+           $res  = $this->menuModel->add($data);
+            if ($res){
+                $this->success('添加成功',U('menuList'));die;
+            }else{
+                $this->error('添加失败');
+            }
+
+        }
+        //获取所有菜单栏
+        $datas = $this->menuModel->select();
+        //树形显示菜单
+        $treeData =  getTree($datas);
+        $this->assign('datas',$treeData);
+        $this->display();
+    }
+
+    /**
+     * 角色展示
+     */
+    public function roleList()
+    {
+        $roleData = $this->roleModel->select();
+        $this->assign('roleData',$roleData);
+        $this->display();
+    }
+
+    /**
+     * 角色添加
+     */
+    public function roleAdd()
+    {
+        if (IS_POST){
+            $data = I('post.');
+          $res = $this->roleModel->add($data);
+            if ($res){
+                $this->success('添加成功',U('roleList'));die;
+            }else{
+                $this->error('添加失败');
+            }
+        }
+        $this->display();
+    }
+
+    /**
+     * 权限修改列表
+     */
+    public function accessList()
+    {
+        //查询要分配的权限的角色
+        $id = I('id');
+        $data = $this->roleModel->find($id);
+        $this->assign('data',$data);
+        //显示所有的权限
+        $menuData = $this->menuModel->select();
+        $menuData = list_to_tree($menuData);
+        $this->assign('menuData',$menuData);
+        //出路默认勾选
+        $accessData = $this->accessModel->field('menu_id')->where('role_id='.$id)->select();
+        //数组进行降维
+        $accessData = array_column($accessData,'menu_id');
+        $this->assign('accessData',$accessData);
+        $this->display();
+    }
+    /**
+     * 权限修改处理
+     */
+    public function accessUpdate()
+    {
+        if (IS_POST) {
+          $datas = I('post.');
+//            dump($datas);die;
+       foreach ($datas['menus'] as $key=>$value){
+           $data[$key]['role_id'] = $datas['role_id'];
+           $data[$key]['menu_id'] = $value;
+       }
+
+            //防止重复增加在增加之前删除所有权限
+            $this->accessModel->where('role_id='.$datas['role_id'])->delete();
+       $res = $this->accessModel->addAll($data);
+            if ($res){
+                $this->success('操作成功',U('roleList'));die;
+            }else{
+                $this->error('操作失败');
+            }
+        }
+    }
+}

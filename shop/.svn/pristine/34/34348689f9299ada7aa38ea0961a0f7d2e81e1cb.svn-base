@@ -1,0 +1,44 @@
+<?php
+namespace Admin\Controller;
+
+use Think\Controller;
+use Think\Image;
+
+class SystemController extends Controller
+{
+    //重复使用模型处理
+    public $menuModel;
+    public function __construct()
+    {
+        parent::__construct();
+        $this->menuModel = D('Menu');
+    }
+
+    /**
+     * 权限菜单列表显示
+     */
+    public function menuList()
+    {
+
+        $this->display();
+    }
+    /**
+     * 权限菜单列表增加
+     */
+    public function menuAdd()
+    {
+        //处理提交数据
+        if (IS_POST){
+            $data = I('post.');
+//            dump($menuData);die;
+           $res  = $this->menuModel->add($data);
+            if ($res){
+                $this->success('添加成功',U('menuList'));die;
+            }else{
+                $this->error('添加失败');
+            }
+
+        }
+        $this->display();
+    }
+}

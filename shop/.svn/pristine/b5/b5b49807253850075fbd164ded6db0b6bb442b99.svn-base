@@ -1,0 +1,13 @@
+<?php
+namespace Home\Model;
+
+use Think\Model;
+
+class UserModel extends Model
+{
+    protected function _before_insert(&$data,$options)
+    {
+            $data['user_addtime'] = time();
+            $data['user_password'] = md5($data['user_password']);
+    }
+}

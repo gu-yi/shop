@@ -1,0 +1,75 @@
+<?php
+namespace Home\Controller;
+
+use Think\Controller;
+
+class GoodsController extends Controller
+{
+    //商品列表页
+	public function goods_list()
+    {
+        $brand_id = !empty(I('id'))?I('id'):0;
+        //拼接sql
+        $where = ' goods_status=1 ';
+        if ($brand_id){
+            $where .=' and brand_id='.$brand_id;
+        }
+        //获取价格区间
+        $price = !empty(I('price'))?I('price'):0;
+        $price_arr = explode('-',$price);
+        if ($price){
+            $where .= ' and goods_price>'.$price_arr[0].' and goods_price<'.$price_arr[1];
+        }
+
+        //获取商品数据
+        $goods_data = D('Goods')->where($where)->select();
+        $this->assign('goods_data',$goods_data);
+        //获取所有品牌信息
+        $brand_data = D('Brand')->where('brand_status=1')->select();
+        $this->assign('brand_data',$brand_data);
+        //品牌id数据
+      $this->assign('brand_id',$brand_id);
+      //价格区间数据
+      $this->assign('price_data',getPrice());
+      $this->assign('price',$price);
+
+        $this->display();
+
+    }
+			
+	//商品详情页
+    public function goods_detail()
+    {
+     $id = I('id');
+     //判断文件是否存在 以及文件时效
+        //echo " __ROOT__/Uploads/goods/goods_detail_'.$id.'.html" ;die;
+        if (file_exists('./goods/goods_detail_'.$id.'.html') && filemtime('./goods/goods_detail_'.$id.'.html')+3600 >time()){
+            require ('./goods/goods_detail_'.$id.'.html');
+        }else{
+     //开启缓存
+        ob_start();
+     //设置商品查询一次 浏览次数自动加1
+     D('Goods')->where('id='.$id)->setInc('goods_click',1);
+        //视图操作
+    $data = D('goodsView')->where(array('id='.$id,'goods_status=1'))->find();
+      // dump($data);die;
+        //获取属性数据
+        $goods_attr = D('Goodsattr')->alias('a')->field('a.*,b.attr_name,b.attr_sel')->join('left join tp_attribute as b on a.attr_id=b.id')->where(array('goods_id'=>$id,'b.attr_sel'=>1))->select();
+
+      foreach ($goods_attr as $key=>$value){
+          $goods_attr[$key]['child']=explode(',',$value['goods_attr_val']);
+      }
+        //获取商品相册
+        $pic_data = D('Pic')->where(array('goods_id'=>$id))->select();
+
+        $this->assign('pic_data',$pic_data);
+      $this->assign('data',$data);
+      $this->assign('goods_attr',$goods_attr);
+        $this->display();
+        $content = ob_get_contents();
+        ob_end_clean();
+       echo $content;
+        file_put_contents('./goods/goods_detail_'.$id.'.html',$content);
+        }
+    }
+}

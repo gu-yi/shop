@@ -1,0 +1,16 @@
+[ 2017-06-07T19:57:45+08:00 ] 127.0.0.1 /Admin/Attribute/get_attr.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000459s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000837s ]
+SQL: SHOW COLUMNS FROM `tp_cate` [ RunTime:0.0114s ]
+SQL: SHOW COLUMNS FROM `tp_attribute` [ RunTime:0.0113s ]
+SQL: SELECT * FROM `tp_attribute` WHERE ( cate_id=2 )  [ RunTime:0.0004s ]
+
+[ 2017-06-07T20:01:26+08:00 ] 127.0.0.1 /Admin/Attribute/get_attr.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001239s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001651s ]
+SQL: SHOW COLUMNS FROM `tp_cate` [ RunTime:0.0118s ]
+SQL: SHOW COLUMNS FROM `tp_attribute` [ RunTime:0.0089s ]
+SQL: SELECT * FROM `tp_attribute` WHERE ( cate_id=2 )  [ RunTime:0.0005s ]
+

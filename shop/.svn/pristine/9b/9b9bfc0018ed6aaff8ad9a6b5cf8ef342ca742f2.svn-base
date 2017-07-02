@@ -1,0 +1,13 @@
+[ 2017-05-29T19:06:25+08:00 ] 127.0.0.1 /admin/test/test11
+ERR: 1146:La table 'shop.tp_test' n'existe pas
+ [ SQL语句 ] : SHOW COLUMNS FROM `tp_test`
+
+[ 2017-05-29T19:28:12+08:00 ] 127.0.0.1 /admin/login/verityl
+ERR: 非法操作:verityl
+
+[ 2017-05-29T19:28:19+08:00 ] 127.0.0.1 /admin/login/verity
+ERR: 非法操作:verity
+
+[ 2017-05-29T19:39:52+08:00 ] 127.0.0.1 /Admin/Login/Verify0.5154991704797294
+ERR: 非法操作:Verify0.5154991704797294
+

@@ -1,0 +1,11 @@
+<?php
+namespace Home\Controller;
+header('content-type:text/html;charset=utf-8');
+use Think\Controller;
+class IndexController extends Controller {
+    public function index(){
+        //$this->error('失败',U('test/test1'),2);
+    // $this->success('成功',U('test/test'),2);
+        $this->display('index');
+    }
+}

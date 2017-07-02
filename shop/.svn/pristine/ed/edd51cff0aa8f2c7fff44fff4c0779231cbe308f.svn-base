@@ -1,0 +1,99 @@
+<?php
+namespace Home\Controller;
+
+use Org\Net\IpLocation;
+use Think\Controller;
+use Think\Verify;
+
+class LoginController extends Controller
+{
+    //登录首页
+    public function login()
+    {
+        if (IS_POST){
+            $data =I('post.');
+            $res = D('User')->where(array('user_name'=>$data['username'],'user_password'=>md5($data['password'])))->find();
+            if ($res){
+                //获取IP地址
+                $ip = get_client_ip();
+                //初始化ip地址类 指定ip数据库文件
+                $ipObj = new IpLocation('qqwry.dat');
+                //根据IP来获取位置信息
+                $ipData = $ipObj->getlocation($ip);
+               //区域转码
+                $ipData['area']= iconv('GB2312','UTF-8',$ipData['area']);
+                $ipData['country']= iconv('GB2312','UTF-8',$ipData['country']);
+                //登录信息保存进session
+                session('userip',$ipData);
+                session('username',$res['user_name']);
+                session('user_id',$res['id']);
+                //若勾选保存用户信息则保存
+                if ($data['remember']==1){
+                  cookie('username',$res['user_name']);
+
+                }
+                $this->success('登录成功',U('Index/index'));
+            }else{
+                $this->error('用户名或者密码错误');
+            }
+        }
+
+        $this->display();
+    }
+    /**
+     * 退出登录
+     */
+    public function login_out()
+    {
+        session(null);
+        if(!session('?username')){
+            $this->success('退出成功',U('Login/login'));
+        }
+    }
+    //会员注册页
+    public function reg()
+    {
+        if (IS_POST){
+            $model = D('User');
+            $yzm = I('captcha');
+
+            $data = $model->create();
+
+            $verify = new Verify();
+            if ($verify->check($yzm)) {
+
+                if (!$data) {
+                    $this->error($model->getError());
+                }
+                $res = $model->add();
+                if ($res) {
+                    $this->success('添加成功', U('login'));
+                    die;
+                } else {
+                    $this->error('添加失败');
+                }
+            }else{
+                $this->error('验证码有误');
+            }
+        }
+
+
+        $this->display();
+    }
+    //验证码
+    public function verify(){
+        $config =	array(
+            'useImgBg'  =>  true,           // 使用背景图片
+            'fontSize'  =>  13,              // 验证码字体大小(px)
+            'useCurve'  =>  false,            // 是否画混淆曲线
+            'useNoise'  =>  false,            // 是否添加杂点
+            'imageH'    =>  23,               // 验证码图片高度
+            'imageW'    =>  100,               // 验证码图片宽度
+            'length'    =>  4,               // 验证码位数
+            'fontttf'   =>  '6.ttf',              // 验证码字体，不设置随机获取
+        );
+        $verify = new Verify($config);
+        $verify->entry();
+
+    }
+}

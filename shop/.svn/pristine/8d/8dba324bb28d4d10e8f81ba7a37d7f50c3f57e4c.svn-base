@@ -1,0 +1,75 @@
+[ 2017-06-07T19:04:37+08:00 ] 127.0.0.1 /home/Goods/detail
+ERR: 1064:Erreur de syntaxe près de ') AND (  a.goods_status=1 ) LIMIT 1' à la ligne 1
+ [ SQL语句 ] : SELECT a.*,b.brand_name FROM tp_goods a left join tp_brand as b on a.brand_id=b.id  WHERE (  a.id= ) AND (  a.goods_status=1 ) LIMIT 1  
+
+[ 2017-06-07T19:23:42+08:00 ] 127.0.0.1 /Home/Googs/goods_list.html
+ERR: 无法加载控制器:Googs
+
+[ 2017-06-07T19:23:58+08:00 ] 127.0.0.1 /Home/Googs/goods_list.html
+ERR: 无法加载控制器:Googs
+
+[ 2017-06-07T19:24:00+08:00 ] 127.0.0.1 /Home/Googs/goods_list.html
+ERR: 无法加载控制器:Googs
+
+[ 2017-06-07T19:24:00+08:00 ] 127.0.0.1 /Home/Googs/goods_list.html
+ERR: 无法加载控制器:Googs
+
+[ 2017-06-07T19:24:00+08:00 ] 127.0.0.1 /Home/Googs/goods_list.html
+ERR: 无法加载控制器:Googs
+
+[ 2017-06-07T19:24:00+08:00 ] 127.0.0.1 /Home/Googs/goods_list.html
+ERR: 无法加载控制器:Googs
+
+[ 2017-06-07T19:24:00+08:00 ] 127.0.0.1 /Home/Googs/goods_list.html
+ERR: 无法加载控制器:Googs
+
+[ 2017-06-07T19:24:00+08:00 ] 127.0.0.1 /Home/Googs/goods_list.html
+ERR: 无法加载控制器:Googs
+
+[ 2017-06-07T19:24:01+08:00 ] 127.0.0.1 /Home/Googs/goods_list.html
+ERR: 无法加载控制器:Googs
+
+[ 2017-06-07T19:24:01+08:00 ] 127.0.0.1 /Home/Googs/goods_list.html
+ERR: 无法加载控制器:Googs
+
+[ 2017-06-07T19:24:01+08:00 ] 127.0.0.1 /Home/Googs/goods_list.html
+ERR: 无法加载控制器:Googs
+
+[ 2017-06-07T19:24:01+08:00 ] 127.0.0.1 /Home/Googs/goods_list.html
+ERR: 无法加载控制器:Googs
+
+[ 2017-06-07T19:44:37+08:00 ] 127.0.0.1 /Home/Goods/__UPLOAD_
+ERR: 非法操作:__UPLOAD_
+
+[ 2017-06-07T19:46:11+08:00 ] 127.0.0.1 /Home/Goods/__UPLOAD_
+ERR: 非法操作:__UPLOAD_
+
+[ 2017-06-07T19:46:12+08:00 ] 127.0.0.1 /Home/Goods/__UPLOAD_
+ERR: 非法操作:__UPLOAD_
+
+[ 2017-06-07T19:46:13+08:00 ] 127.0.0.1 /Home/Goods/__UPLOAD_
+ERR: 非法操作:__UPLOAD_
+
+[ 2017-06-07T21:04:37+08:00 ] 127.0.0.1 /Home/Goods/goods_listid/0
+ERR: 非法操作:goods_listid
+
+[ 2017-06-07T21:04:40+08:00 ] 127.0.0.1 /Home/Goods/goods_listid/0
+ERR: 非法操作:goods_listid
+
+[ 2017-06-07T21:04:41+08:00 ] 127.0.0.1 /Home/Goods/goods_listid/0
+ERR: 非法操作:goods_listid
+
+[ 2017-06-07T21:04:41+08:00 ] 127.0.0.1 /Home/Goods/goods_listid/0
+ERR: 非法操作:goods_listid
+
+[ 2017-06-07T21:04:42+08:00 ] 127.0.0.1 /Home/Goods/goods_listid/0
+ERR: 非法操作:goods_listid
+
+[ 2017-06-07T22:33:14+08:00 ] 127.0.0.1 /Home/Goods/goods_detail/id/80.html
+ERR: 1054:Champ 'a.id' inconnu dans where clause
+ [ SQL语句 ] : SELECT * FROM `tp_goods_view` WHERE (  a.id=80 ) AND (  a.goods_status=1 ) LIMIT 1  
+
+[ 2017-06-07T23:25:44+08:00 ] 127.0.0.1 /Home/Goods/goods_detail/id/81.html
+ERR: 1064:Erreur de syntaxe près de 'WHERE ( goods_id=81 )' à la ligne 1
+ [ SQL语句 ] : SELECT a.*,b.attr_name,b.sttr_sel FROM tp_goodsattr a left join   WHERE ( goods_id=81 ) 
+

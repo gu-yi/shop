@@ -1,0 +1,20 @@
+[ 2017-06-25T21:14:43+08:00 ] 127.0.0.1 /Home/Cart/cart_all_delete
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000426s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000772s ]
+SQL: SHOW COLUMNS FROM `tp_cart` [ RunTime:0.0117s ]
+SQL: DELETE FROM `tp_cart` WHERE `user_id` = 10 [ RunTime:0.0004s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000583s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000706s ]
+
+[ 2017-06-25T21:16:02+08:00 ] 127.0.0.1 /Home/Cart/cart_all_delete
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000408s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000776s ]
+SQL: SHOW COLUMNS FROM `tp_cart` [ RunTime:0.0130s ]
+SQL: DELETE FROM `tp_cart` WHERE `user_id` = 10 [ RunTime:0.0003s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000526s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000638s ]
+
